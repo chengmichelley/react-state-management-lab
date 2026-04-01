@@ -89,6 +89,17 @@ const App = () => {
      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png",
    },
  ]);
+
+ const handleAddFighter = (fighter) => {
+  if (money < fighter.price) {
+   console.log("Not enough money!")
+   return;
+  }
+  setTeam([...team, fighter]);
+  const updateZombieFighters= zombieFighters.filter((f)=> f.id != fighter.id);
+  setZombieFighters(updateZombieFighters);
+  setMoney(money- fighter.price);
+ }
   return (
     <>
       <h1>Zombie Fighters</h1>
