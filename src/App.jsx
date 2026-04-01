@@ -99,8 +99,10 @@ const App = () => {
   const updateZombieFighters= zombieFighters.filter((f)=> f.id != fighter.id);
   setZombieFighters(updateZombieFighters);
   setMoney(money- fighter.price);
-
  }
+
+ const totalStrength = team.reduce((total, fighter)=> total + fighter.strength, 0);
+
   return (
     <>
       <h1>Zombie Fighters</h1>
@@ -122,6 +124,7 @@ const App = () => {
 
       <div>
        <h2>Your Team!</h2>
+       <h3>Team Strength: {totalStrength}</h3>
        {team.length === 0 ? ( <p>Pick some team members!</p>) : (
         <ul>
         {team.map((fighter, index) => (
