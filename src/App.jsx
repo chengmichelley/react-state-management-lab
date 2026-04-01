@@ -108,6 +108,16 @@ const App = () => {
    0,
  );
 
+  const handleRemoveFighter = (removeFighter) => {
+ 
+    const updateTeam = team.filter(
+      (fighter) => fighter.id != removeFighter.id,
+    );
+    setTeam(updateTeam);
+    setZombieFighters([...zombieFighters, removeFighter]);
+    setMoney(money + removeFighter.price);
+  };
+
   return (
     <>
       <h1>Zombie Fighters</h1>
