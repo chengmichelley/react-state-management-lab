@@ -99,6 +99,7 @@ const App = () => {
   const updateZombieFighters= zombieFighters.filter((f)=> f.id != fighter.id);
   setZombieFighters(updateZombieFighters);
   setMoney(money- fighter.price);
+
  }
   return (
     <>
@@ -118,7 +119,24 @@ const App = () => {
           </li>
         ))}
       </ul>
-    </>
+
+      <div>
+       <h2>Your Team!</h2>
+       {team.length === 0 ? ( <p>Pick some team members!</p>) : (
+        <ul>
+        {team.map((fighter, index) => (
+          <li key={fighter.id}>
+            <img src={fighter.img} alt={fighter.name} />
+            <h2>{fighter.name}</h2>
+            <p>Price: {fighter.price}</p>
+            <p>Strength: {fighter.strength}</p>
+            <p>Agility: {fighter.agility}</p>
+          </li>
+        ))}
+       </ul>
+       )}
+      </div>
+     </>
   );
 };
 
