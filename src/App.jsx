@@ -6,6 +6,7 @@ import "./App.css";
 const App = () => {
  const [ team, setTeam ] = useState([]);
  const [ money, setMoney ] = useState(100);
+ const [ message, setMessage ] = useState("");
  const [ zombieFighters, setZombieFighters ] = useState(
   [
    {
@@ -92,9 +93,10 @@ const App = () => {
 
  const handleAddFighter = (fighter) => {
   if (money < fighter.price) {
-   console.log("Not enough money!")
+   setMessage("Not enough money!");
    return;
   }
+  setMessage("");
   setTeam([...team, fighter]);
   const updateZombieFighters= zombieFighters.filter((f)=> f.id != fighter.id);
   setZombieFighters(updateZombieFighters);
@@ -122,6 +124,7 @@ const App = () => {
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: {money}</h2>
+      { message && <p>{ message }</p>}
       <ul>
         {zombieFighters.map((fighter, index) => (
           <li key={fighter.id}>
