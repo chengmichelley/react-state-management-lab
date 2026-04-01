@@ -89,7 +89,23 @@ const App = () => {
      img: "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/react-state-management-lab/assets/e41f26.png",
    },
  ]);
-  return <h1>Hello world!</h1>;
+  return (
+    <>
+      <h1>Zombie Fighters</h1>;
+      <ul>
+        {zombieFighters.map((fighter, index) => (
+          <li key={fighter.id}>
+            <img src={fighter.img} alt={fighter.name} />
+            <h2>{fighter.name}</h2>
+            <p>Price: {fighter.price}</p>
+            <p>Strength: {fighter.strength}</p>
+            <p>Agility: {fighter.agility}</p>
+            <button onClick={() => handleAddFighter(fighter)}>Add to your team!</button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default App;
