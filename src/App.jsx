@@ -91,7 +91,8 @@ const App = () => {
  ]);
   return (
     <>
-      <h1>Zombie Fighters</h1>;
+      <h1>Zombie Fighters</h1>
+      <h2>Money: { money }</h2>
       <ul>
         {zombieFighters.map((fighter, index) => (
           <li key={fighter.id}>
@@ -100,7 +101,9 @@ const App = () => {
             <p>Price: {fighter.price}</p>
             <p>Strength: {fighter.strength}</p>
             <p>Agility: {fighter.agility}</p>
-            <button onClick={() => handleAddFighter(fighter)}>Add to your team!</button>
+            <button onClick={() => handleAddFighter(fighter)}>
+              Add to your team!
+            </button>
           </li>
         ))}
       </ul>
