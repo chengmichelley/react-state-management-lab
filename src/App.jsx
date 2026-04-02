@@ -98,9 +98,9 @@ const App = () => {
   }
   setMessage("");
   setTeam([...team, fighter]);
-  const updateZombieFighters= zombieFighters.filter((f)=> f.id != fighter.id);
+  const updateZombieFighters= zombieFighters.filter((f)=> f.id !== fighter.id);
   setZombieFighters(updateZombieFighters);
-  setMoney(money- fighter.price);
+  setMoney((prev) => prev- fighter.price);
  }
 
  const totalStrength = team.reduce((total, fighter)=> total + fighter.strength, 0);
@@ -113,11 +113,12 @@ const App = () => {
   const handleRemoveFighter = (removeFighter) => {
  
     const updateTeam = team.filter(
-      (fighter) => fighter.id != removeFighter.id,
+      (fighter) => fighter.id !== removeFighter.id,
     );
     setTeam(updateTeam);
     setZombieFighters([...zombieFighters, removeFighter]);
-    setMoney(money + removeFighter.price);
+    setMoney((prev) => prev + removeFighter.price);
+    setMessage("");
   };
 
   return (
@@ -126,7 +127,7 @@ const App = () => {
       <h2>Money: {money}</h2>
       { message && <p>{ message }</p>}
       <ul>
-        {zombieFighters.map((fighter, index) => (
+        {zombieFighters.map((fighter) => (
           <li key={fighter.id}>
             <img src={fighter.img} alt={fighter.name} />
             <h2>{fighter.name}</h2>
@@ -148,7 +149,7 @@ const App = () => {
           <p>Pick some team members!</p>
         ) : (
           <ul>
-            {team.map((fighter, index) => (
+            {team.map((fighter) => (
               <li key={fighter.id}>
                 <img src={fighter.img} alt={fighter.name} />
                 <h2>{fighter.name}</h2>
